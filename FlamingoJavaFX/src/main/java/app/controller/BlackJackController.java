@@ -54,30 +54,31 @@ public class BlackJackController implements Initializable {
 		act.setPlayer(FlamingoGame.getAppPlayer());
 		FlamingoGame.SendMessageToClient(act);
 
-		// TODO: Implement this. Create a new 'Action', send the 'Sit' or 'Leave' action
-		// to the Hub.
-
 	}
 
 	public void HandleTableState(Table t) {
-
+		
+		Button btn = null;
+		Label lbl =  null;
+		
 		for (Player p: t.GetTablePlayers())
 		{
 			switch (p.getiPlayerPosition())
 			{
 			case 0:
-				lblBottomName.setText(p.getPlayerName());
+				btn = btnBottom;
+				lbl = lblBottomName;
+				btnBottom.setText("Leave");
 				break;
 			case 2:
-				lblTopName.setText(p.getPlayerName());
+				btn = btnTop;
+				lbl = lblTopName;
+				btnTop.setText("Leave");
 				break;
 			}
+			btn.setVisible(!p.getPlayerID().equals(FlamingoGame.getAppPlayer().getPlayerID()));
+			lbl.setText(p.getPlayerName());
 		}
-		
-		//	How to handle button text & visibility
-		//btnTop.setText("Leave");
-		//btnTop.setVisible(false);
-		// TODO: Implement this.
 	}
 
 	public void HandleGameState(GamePlay gp) {
