@@ -20,7 +20,7 @@ public class Card implements Comparable {
 	public eSuit geteSuit() {
 		return eSuit;
 	}
-
+	//
 	private void seteSuit(eSuit eSuit) {
 		this.eSuit = eSuit;
 	}
